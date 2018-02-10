@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Star Wars Top Trumps",
+  "name": "Star Wars Top Trumps - A React JS sample application",
   "icons": [
     {
       "src": "favicon.ico",
