@@ -1,0 +1,17 @@
+{
+  "plugins" : [
+    "transform-runtime",
+    ["module-resolver", {
+      "root": ["./src"]
+    }]
+  ],
+  "presets" : [["es2015", { "modules": false }], "react", "stage-0"],
+  "env": {
+    "development": {
+      "presets": ["react-hmre"]
+    },
+    "test": {
+      "plugins": ["transform-es2015-modules-commonjs"]
+    }
+  }
+}
