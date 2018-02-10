@@ -1,1 +1,80 @@
 
+.star-wars-top-trumps {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100vh;
+  text-align: center;
+}
+
+.star-wars-top-trumps div {
+  border: 1px solid blue;
+}
+
+.control-panel,
+.score-panel {
+  flex: auto;
+}
+
+.score-panel {
+  flex-basis: 8%;
+}
+
+.player-scores {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.player-score {
+  width: 200px;
+  height: 100px;
+}
+
+.result {
+  margin-top: 10px;
+}
+
+.game-panel {
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-grow: 1;
+}
+
+.game-panel-x {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card-container {
+  padding: 10px;
+}
+
+.card {
+  width: 300px;
+  height: 400px;
+  padding: 10px;
+}
+
+.card-image {
+  height: 200px;
+}
+
+.selected-feature {
+  margin-top: 10px;
+}
+
+.control-panel {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.button {
+  width: 200px;
+  height: 30px;
+}
