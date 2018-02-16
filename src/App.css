@@ -157,12 +157,16 @@
 .card-image-container {
   overflow: hidden;
   border: 1px solid #232323;
+  height: 225px;
+  background: black;
+  text-align: center;
 }
 
 .card-image {
-  max-width: 100%;  
-  height:auto;
-  display:block;
+  width: auto;
+  height: 225px;
+  display: block;
+  margin: 0 auto;
 }
 
 .card-feature-list {
