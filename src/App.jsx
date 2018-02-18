@@ -62,17 +62,14 @@ class App extends Component {
   }
 
   handlePlay = (card1, card2) => {
-    const feature1 = card1[this.state.selectedFeature];
-    const feature2 = card2[this.state.selectedFeature];
+    const feature1 = parseInt(card1[this.state.selectedFeature], 10);
+    const feature2 = parseInt(card2[this.state.selectedFeature], 10);
     const newState = {};
 
-    if (parseInt(feature1, 10) > parseInt(feature2, 10)) {
+    if (feature1 > feature2) {
       newState.lastWinner = PLAYER_1;
-    } else if (parseInt(feature1, 10) < parseInt(feature2, 10)) {
+    } else if (feature1 < feature2) {
       newState.lastWinner = PLAYER_2;
-      if (this.state.deck1.length === 1){
-        newState.status = STATUS_OVER;
-      }
     } else {
       newState.isDraw = true;
     }
