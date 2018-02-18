@@ -10,7 +10,6 @@ import {
   STATUS_DONE,
   PLAYER_1,
   PLAYER_2,
-  DRAW,
 } from './constants/constants';
 import './App.css';
 
@@ -28,6 +27,7 @@ class App extends Component {
       deck1: vehicles.slice(0, halfLength),
       deck2: vehicles.slice(halfLength),
       selectedFeature: undefined,
+      isDraw: false,
     };
   }
 
@@ -51,17 +51,19 @@ class App extends Component {
     const feature1 = card1[this.state.selectedFeature];
     const feature2 = card2[this.state.selectedFeature];
 
-    let winner = DRAW;
+    const newState = {
+      status: STATUS_DONE,
+    };
+
     if (parseInt(feature1, 10) > parseInt(feature2, 10)) {
-      winner = PLAYER_1;
+      newState.lastWinner = PLAYER_1;
     } else if (parseInt(feature1, 10) < parseInt(feature2, 10)) {
-      winner = PLAYER_2;
+      newState.lastWinner = PLAYER_2;
+    } else {
+      newState.isDraw = true;
     }
 
-    this.setState({
-      status: STATUS_DONE,
-      lastWinner: winner,
-    });
+    this.setState(newState);
   }
 
   handleContinue = (card1, card2) => {
@@ -69,24 +71,24 @@ class App extends Component {
       deck1,
       deck2,
       lastWinner,
+      isDraw,
     } = this.state;
 
-    if (lastWinner === DRAW) {
-      this.setState({
-        deck1: [...deck1.slice(1), ...(lastWinner === PLAYER_1 ? [card1] : [])],
-        deck2: [...deck2.slice(1), ...(lastWinner === PLAYER_2 ? [card2] : [])],
-        status: STATUS_READY,
-        selectedFeature: undefined,
-      });
-      return;
-    }
-
-    this.setState({
-      deck1: [...deck1.slice(1), ...(lastWinner === PLAYER_1 ? [card1, card2] : [])],
-      deck2: [...deck2.slice(1), ...(lastWinner === PLAYER_2 ? [card1, card2] : [])],
+    const newState = {
       status: STATUS_READY,
       selectedFeature: undefined,
-    });
+      isDraw: false,
+    };
+
+    if (isDraw) {
+      newState.deck1 = [...deck1.slice(1), card1];
+      newState.deck2 = [...deck2.slice(1), card2];
+    } else {
+      newState.deck1 = [...deck1.slice(1), ...(lastWinner === PLAYER_1 ? [card1, card2] : [])];
+      newState.deck2 = [...deck2.slice(1), ...(lastWinner === PLAYER_2 ? [card1, card2] : [])];
+    }
+
+    this.setState(newState);
   }
 
   render() {
@@ -96,6 +98,7 @@ class App extends Component {
       status,
       selectedFeature,
       lastWinner,
+      isDraw,
     } = this.state;
 
     return (
@@ -107,11 +110,11 @@ class App extends Component {
         <GamePanel
           player1Card={deck1[0]}
           player2Card={deck2[0]}
-          playersTurn={lastWinner || PLAYER_1}
           selectedFeature={selectedFeature}
           status={status}
           handleFeatureSelection={this.handleFeatureSelection}
           lastWinner={lastWinner}
+          isDraw={isDraw}
         />
         <ControlPanel
           status={status}
