@@ -4,6 +4,7 @@ import CardContainer from './CardContainer';
 import {
   STATUS_READY,
   STATUS_DONE,
+  STATUS_OVER,
   PLAYER_1,
   PLAYER_2,
 } from '../constants/constants';
@@ -21,6 +22,9 @@ const GamePanel = (props) => {
 
   return (
     <div className="game-panel">
+      { status === STATUS_OVER && (
+        <div className="game-panel-result">Game Over</div>
+      )}
       { isDraw && (
         <div className="game-panel-result">Draw</div>
       )}
@@ -30,7 +34,7 @@ const GamePanel = (props) => {
         handleFeatureSelection={handleFeatureSelection}
         selectedFeature={selectedFeature}
         status={status}
-        isWinner={status === STATUS_DONE && lastWinner === PLAYER_1 && !isDraw}
+        isWinner={status !== STATUS_READY && lastWinner === PLAYER_1 && !isDraw}
       />
       <div className="game-panel-x">x</div>
       <CardContainer 
@@ -39,7 +43,7 @@ const GamePanel = (props) => {
         handleFeatureSelection={handleFeatureSelection}
         selectedFeature={selectedFeature}
         status={status}
-        isWinner={status === STATUS_DONE && lastWinner === PLAYER_2 && !isDraw}
+        isWinner={status !== STATUS_READY && lastWinner === PLAYER_2 && !isDraw}
       />
     </div>
   );

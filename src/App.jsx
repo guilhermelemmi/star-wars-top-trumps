@@ -8,6 +8,7 @@ import vehiclesData from './data/vehicles.json';
 import {
   STATUS_READY,
   STATUS_DONE,
+  STATUS_OVER,
   PLAYER_1,
   PLAYER_2,
 } from './constants/constants';
@@ -15,20 +16,22 @@ import './App.css';
 
 class App extends Component {
 
-  constructor(props) {
-    super(props);
+  componentWillMount() {
+    this.resetGame();
+  }
 
+  resetGame() {
     const vehicles = shuffleArray(vehiclesData.vehicles);
     const halfLength = Math.ceil(vehicles.length / 2);
-
-    this.state = {
+    
+    this.setState({
       status: STATUS_READY,
       lastWinner: undefined,
       deck1: vehicles.slice(0, halfLength),
       deck2: vehicles.slice(halfLength),
       selectedFeature: undefined,
       isDraw: false,
-    };
+    });
   }
 
   handleFeatureSelection = (featureKey) => {
@@ -40,29 +43,41 @@ class App extends Component {
   handleButtonClick= () => {
     const card1 = this.state.deck1[0];
     const card2 = this.state.deck2[0];
-    if (this.state.status === STATUS_READY) {
-      this.handlePlay(card1, card2);
-    } else {
-      this.handleContinue(card1, card2);
+    switch (this.state.status) {
+      case STATUS_OVER:
+        this.resetGame();
+        break;
+      case STATUS_READY:
+        this.handlePlay(card1, card2);
+        break;
+      default:
+        this.handleContinue(card1, card2);
     }
+  }
+
+  willGameEnd () {
+    return !this.state.isDraw && 
+      ((this.state.lastWinner === PLAYER_1 && this.state.deck2.length === 1) ||
+      (this.state.lastWinner === PLAYER_2 && this.state.deck1.length === 1));
   }
 
   handlePlay = (card1, card2) => {
     const feature1 = card1[this.state.selectedFeature];
     const feature2 = card2[this.state.selectedFeature];
-
-    const newState = {
-      status: STATUS_DONE,
-    };
+    const newState = {};
 
     if (parseInt(feature1, 10) > parseInt(feature2, 10)) {
       newState.lastWinner = PLAYER_1;
     } else if (parseInt(feature1, 10) < parseInt(feature2, 10)) {
       newState.lastWinner = PLAYER_2;
+      if (this.state.deck1.length === 1){
+        newState.status = STATUS_OVER;
+      }
     } else {
       newState.isDraw = true;
     }
 
+    newState.status = this.willGameEnd() ? STATUS_OVER : STATUS_DONE;
     this.setState(newState);
   }
 
