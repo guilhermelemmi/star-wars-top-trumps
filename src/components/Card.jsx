@@ -8,6 +8,8 @@ const Card = (props) => {
   const {
     isClosed,
     card,
+    handleFeatureSelection,
+    status,
   } = props;
 
   return (
@@ -24,6 +26,8 @@ const Card = (props) => {
           />
           <CardFeatureList
             card={card}
+            handleFeatureSelection={handleFeatureSelection}
+            status={status}
           />
         </div>
       ) : null}
@@ -34,6 +38,8 @@ const Card = (props) => {
 Card.propTypes = {
   isClosed: PropTypes.bool.isRequired,
   card: PropTypes.object.isRequired,
+  handleFeatureSelection: PropTypes.func.isRequired,
+  status: PropTypes.string.isRequired,
 }
 
 export default Card;

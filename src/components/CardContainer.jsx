@@ -7,16 +7,27 @@ const CardContainer = (props) => {
   const {
     card,
     isClosed,
+    isWinner,
+    selectedFeature,
+    handleFeatureSelection,
+    status,
   } = props;
 
   return (
-    <div className="card-container">
+    <div className={`card-container ${isWinner && 'winner'}`}>
       <div className="card-result">Winner</div>
       <Card 
         card={card}
         isClosed={isClosed}
+        handleFeatureSelection={handleFeatureSelection}
+        status={status}
       />
-      <SelectedFeature />
+      {!isClosed ? (
+        <SelectedFeature
+          selectedFeature={selectedFeature}
+          featureValue={card[selectedFeature]}
+        />
+      ) : null}
     </div>
   );
 }
@@ -24,6 +35,10 @@ const CardContainer = (props) => {
 CardContainer.propTypes = {
   card: PropTypes.object.isRequired,
   isClosed: PropTypes.bool.isRequired,
+  isWinner: PropTypes.bool.isRequired,
+  status: PropTypes.string.isRequired,
+  selectedFeature: PropTypes.string,
+  handleFeatureSelection: PropTypes.func.isRequired,
 }
 
 export default CardContainer;

@@ -1,25 +1,40 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { STATUS_READY } from '../constants/constants';
 
-const CardFeatureRow = (props) => {
-  const {
-    label,
-    value,
-  } = props;
+class CardFeatureRow extends Component {
+  static propTypes = {
+    featureKey: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+    handleFeatureClick: PropTypes.func.isRequired,
+  }
 
-  return (
-    <div className="card-feature-row">
-      <span className="card-feature-label">{label}:</span>
-      <span className="card-feature-value">{value}</span>
-    </div>
-  );
-}
+  handleFeatureClick = () => {
+    this.props.handleFeatureClick(this.props.featureKey);
+  }
 
-CardFeatureRow.propTypes = {
-  label: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  render() {
+    const {
+      label,
+      value,
+      status,
+    } = this.props;
+
+    const featureValue = status === STATUS_READY ? (
+      <a
+        className="card-feature-value"
+        onClick={this.handleFeatureClick}
+      >{value}</a>
+    ) : <span>{value}</span>;
+
+    return (
+      <div className="card-feature-row">
+        <span className="card-feature-label">{label}:</span>
+        {featureValue}
+      </div>
+    );
+  }
 }
 
 export default CardFeatureRow;
-
-

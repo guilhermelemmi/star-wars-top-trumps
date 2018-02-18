@@ -1,40 +1,31 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Button from './Button';
-import constants from '../constants/constants';
+import { STATUS_READY } from '../constants/constants';
 
-class ControlPanel extends Component {
+const ControlPanel = (props) => { 
+  const {
+    status,
+    isPlayEnabled,
+    handleButtonClick,
+  } = props;
 
-  static propTypes = {
-    status: PropTypes.string.isRequired,
-    isPlayEnabled: PropTypes.bool.isRequired,
-  };
-
-  handlePlay = () => {
-    console.log('play');
-  }
-
-  handleContinue = () => {
-    console.log('continue');
-  }
-
-  render() {
-    const {
-      status,
-      isPlayEnabled,
-    } = this.props;
-
-    return (
-      <div className="control-panel">
-        <Button
-          buttonClassName={status === constants.READY ? 'green' : 'orange'}
-          buttonOnClick={status === constants.READY ? this.handlePlay : this.handleContinue}
-          buttonLabel={status === constants.READY ? 'Play' : 'Continue'}
-          buttonIsDisabled={!isPlayEnabled}
-        />
-      </div>
-    );
-  }
+  return (
+    <div className="control-panel">
+      <Button
+        buttonClassName={status === STATUS_READY ? 'green' : 'orange'}
+        buttonOnClick={handleButtonClick}
+        buttonLabel={status === STATUS_READY ? 'Play' : 'Continue'}
+        buttonIsDisabled={!isPlayEnabled}
+      />
+    </div>
+  );
 }
+
+ControlPanel.propTypes = {
+  status: PropTypes.string.isRequired,
+  isPlayEnabled: PropTypes.bool.isRequired,
+  handleButtonClick: PropTypes.func.isRequired,
+};
 
 export default ControlPanel;
