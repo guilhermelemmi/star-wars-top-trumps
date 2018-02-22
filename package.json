@@ -3,13 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
   "devDependencies": {
     "react-scripts": "1.1.1"
   },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
   "scripts": {
+    "lint": "eslint --ext .jsx,.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",

@@ -1,28 +1,270 @@
-.App {
+.star-wars-top-trumps {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100vh;
   text-align: center;
+  background: #000000 url('images/space-background.jpg') no-repeat 1px 0;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.star-wars-top-trumps div {
+  /* border: 1px solid blue; */
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+.control-panel,
+.score-panel {
+  flex: auto;
+}
+
+.score-panel {
+  flex-basis: 8%;
+}
+
+.player-scores {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.player-scores div {
+  width: 100px;
+  height: 100px;
+  background: rgba(0, 0, 0, 0.5) url('images/deck.png') no-repeat 0 0;
+  background-size: contain;
+  position: relative;
+}
+
+.player-score {
+  color: white;
+  font-weight: bold;
+  border-radius: 20px;
+  background: #333;
+  padding: 10px;
+  border: 3px solid #222;
+  position: absolute;
+  top: 30px;
+  left: 60px;
+}
+
+.player-scores div:nth-child(even) {
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+
+.player-scores div:nth-child(even) .player-score {
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+
+.game-panel {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-grow: 1;
+  padding: 0 50px;
+}
+
+.game-panel-result {
+  color: white;
+  background-color: red;
+  color: white;
+  border-radius: 5px;
+  font-size: 2em;
+  margin-top:-50px;
+  margin-bottom: 10px;
+  visibility: visible;
+  position: absolute;
+  padding: 0 80px;
+}
+
+.game-panel-x {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: yellow;
+  font-size: 3.5em;
+}
+
+.card-container {
+  padding: 10px;
+}
+
+.card-container.winner .card-result {
+  visibility: visible;
+}
+
+.card-result {
+  background-color: green;
+  color: white;
+  border-radius: 5px;
+  font-size: 2em;
+  margin-top:-50px;
+  margin-bottom: 10px;
+  visibility: hidden;
+}
+
+.card {
+  background: url('images/swd-cardfront.png') no-repeat 0 -5px;
+  width: 300px;
+  height: 420px;
+  padding: 10px;
+}
+
+.card.closed {
+  background: url('images/swd-cardback.png') no-repeat 0 -5px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 420px;
+}
+
+.card-header {
+  background-color: #232323;
+  color: white;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  padding: 5px;
+}
+
+.card-header h3 {
+  text-align: left;
+  padding: 0;
+  margin: 0 0 7px 0;
+}
+
+.card-additional-info {
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.card-additional-info div{
+  text-align: left;
+  font-size: .7em;
+  font-style: italic;
+  margin: 0 0 5px 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.card-image-container {
+  overflow: hidden;
+  border: 1px solid #232323;
+  height: 225px;
+  max-height: 225px;
+  background-color: #000;
+}
+
+.card-image {
+  height: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
+.card-feature-list {
+  border: 1px solid #232323;
+  border-top: 0;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-color: #232323;
+  padding: 0 0 5px 0;
+  font-size: .8em;
   color: white;
 }
 
-.App-title {
-  font-size: 1.5em;
+.card-feature-row:nth-child(odd) {
+  background-color: #434343;
 }
 
-.App-intro {
-  font-size: large;
+.card-feature-row {
+  padding: 2px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.card-feature-value {
+  cursor: pointer;
+}
+
+.card-feature-value:hover,
+.card-feature-value.selected,
+.card-feature-label.selected {
+  font-weight: bold;
+  color: yellow;
+}
+
+.selected-feature {
+  margin-top: 10px;
+  color: yellow;
+  font-size: 1.2em;
+}
+
+.control-panel {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.button {
+  width: 200px;
+}
+
+/* start da css for da buttons */
+.btn {
+  border-radius: 5px;
+  padding: 15px 25px;
+  font-size: 22px;
+  text-decoration: none;
+  margin: 20px;
+  color: #fff;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.btn.green.disabled {
+  background-color: #333;
+  box-shadow: 0px 5px 0px 0px #15B358;
+}
+
+.btn:active {
+  transform: translate(0px, 5px);
+  -webkit-transform: translate(0px, 5px);
+  box-shadow: 0px 1px 0px 0px;
+}
+
+.green {
+  background-color: #2ecc71;
+  box-shadow: 0px 5px 0px 0px #15B358;
+}
+
+.green:hover {
+  background-color: #48E68B;
+}
+
+.orange {
+  background-color: yellow;
+  box-shadow: 0px 5px 0px 0px #CD6509;
+  color: black;
+  font-weight: bold;
+}
+
+.orange:hover {
+  background-color: #FF983C;
 }
