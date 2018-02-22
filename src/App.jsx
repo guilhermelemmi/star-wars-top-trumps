@@ -66,9 +66,9 @@ class App extends Component {
     const feature2 = parseInt(card2[this.state.selectedFeature], 10);
     const newState = {};
 
-    if (feature1 > feature2) {
+    if (card1.topTrump || feature1 > feature2) {
       newState.lastWinner = PLAYER_1;
-    } else if (feature1 < feature2) {
+    } else if (card2.topTrump || feature1 < feature2) {
       newState.lastWinner = PLAYER_2;
     } else {
       newState.isDraw = true;

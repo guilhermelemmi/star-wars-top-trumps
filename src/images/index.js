@@ -39,5 +39,7 @@ export default {
   ['self-propelled-heavy-artillery-turbolaser_1d69d1e5.jpeg']: require('./self-propelled-heavy-artillery-turbolaser_1d69d1e5.jpeg'),
   ['fliknot-speeder_099a9e27.jpeg']: require('./fliknot-speeder_099a9e27.jpeg'),
   ['neimoidian_escort_shuttle_7602d574.jpeg']: require('./neimoidian_escort_shuttle_7602d574.jpeg'),
-  ['geonosian-fighter_119560e5.jpeg']: require('./geonosian-fighter_119560e5.jpeg')
+  ['geonosian-fighter_119560e5.jpeg']: require('./geonosian-fighter_119560e5.jpeg'),
+  ['X-wing_SWGTCG']: require('./X-wing_SWGTCG.jpg'),
+  ['MF.png']: require('./MF.png')
 };

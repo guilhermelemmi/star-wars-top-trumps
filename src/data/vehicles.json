@@ -120,7 +120,7 @@
 			"maxAtmospheringSpeed": "850",
 			"crew": "1",
 			"passengers": "0",
-			"cargoCapacity": "none",
+			"cargoCapacity": "0",
 			"consumables": "2 days",
 			"vehicle_class": "space/planetary bomber",
 			"pilots": [],
@@ -360,7 +360,7 @@
 			"maxAtmospheringSpeed": "400",
 			"crew": "1",
 			"passengers": "0",
-			"cargoCapacity": "none",
+			"cargoCapacity": "0",
 			"consumables": "none",
 			"vehicle_class": "repulsorcraft",
 			"pilots": [],
@@ -668,7 +668,7 @@
 			"maxAtmospheringSpeed": "100",
 			"crew": "0",
 			"passengers": "4",
-			"cargoCapacity": "none",
+			"cargoCapacity": "0",
 			"consumables": "none",
 			"vehicle_class": "droid tank",
 			"pilots": [],
@@ -830,6 +830,32 @@
 			"edited": "2014-12-22T18:21:16.390980Z",
 			"url": "https://swapi.co/api/vehicles/57/",
       "image": "geonosian-fighter_119560e5.jpeg"
+		},
+		{
+			"name": "T-65 X-wing starfighter",
+			"model": "T-65",
+			"manufacturer": "Incom Corporation",
+			"costInCredits": "149999",
+			"totalLength": "12.5",
+			"maxAtmospheringSpeed": "1050",
+			"crew": "2",
+			"passengers": "0",
+			"cargoCapacity": "110",
+      "image": "X-wing_SWGTCG.jpg"
+		},
+		{
+			"name": "Millennium Falcon",
+			"model": "YT-1300fp light freighter",
+			"manufacturer": "Corellian Engineering Corporation",
+			"costInCredits": "unknown",
+			"totalLength": "34.37",
+			"maxAtmospheringSpeed": "1050",
+			"crew": "4",
+			"passengers": "6",
+			"cargoCapacity": "10000",
+			"pilots": [],
+      "image": "MF.png",
+      "topTrump": true
 		}
 	]
 }
