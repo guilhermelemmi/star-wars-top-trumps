@@ -10,6 +10,7 @@ const Card = (props) => {
     card,
     handleFeatureSelection,
     status,
+    selectedFeature,
   } = props;
 
   return (
@@ -28,6 +29,7 @@ const Card = (props) => {
             card={card}
             handleFeatureSelection={handleFeatureSelection}
             status={status}
+            selectedFeature={selectedFeature}
           />
         </div>
       ) : null}

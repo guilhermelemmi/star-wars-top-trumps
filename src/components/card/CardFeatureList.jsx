@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CardFeatureRow from './CardFeatureRow';
-import features from '../constants/features';
+import features from '../../constants/features';
 
 const CardFeatureList = (props) => {
   const {
     card,
     handleFeatureSelection,
     status,
+    selectedFeature,
   } = props;
 
   const featureListItems = Object.keys(features).map((featureKey) => {
@@ -18,6 +19,7 @@ const CardFeatureList = (props) => {
       label={features[featureKey]}
       value={card[featureKey]}
       handleFeatureClick={handleFeatureSelection}
+      selectedFeature={selectedFeature}
       status={status}
     />
     );

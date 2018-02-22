@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { STATUS_READY } from '../constants/constants';
+import { STATUS_READY } from '../../constants/constants';
 
 class CardFeatureRow extends Component {
   static propTypes = {
@@ -16,21 +16,28 @@ class CardFeatureRow extends Component {
 
   render() {
     const {
+      featureKey,
       label,
       value,
       status,
+      selectedFeature,
     } = this.props;
 
     const featureValue = status === STATUS_READY ? (
       <a
-        className="card-feature-value"
+        className={`card-feature-value ${selectedFeature === featureKey && 'selected'}`}
         onClick={this.handleFeatureClick}
       >{value}</a>
-    ) : <span>{value}</span>;
+    ) : (
+      <span
+        className={`card-feature-value ${selectedFeature === featureKey && 'selected'}`}
+      >{value}</span>);
 
     return (
       <div className="card-feature-row">
-        <span className="card-feature-label">{label}:</span>
+        <span className={`card-feature-label ${selectedFeature === featureKey && 'selected'}`}>
+          {label}:
+        </span>
         {featureValue}
       </div>
     );

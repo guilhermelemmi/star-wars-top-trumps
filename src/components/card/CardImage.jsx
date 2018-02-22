@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import images from '../images/index';
+import images from '../../images/index';
 
 const CardImage = (props) => (
   <div className="card-image-container">

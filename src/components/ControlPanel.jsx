@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from './Button';
+import Button from './common/Button';
 import { STATUS_READY, STATUS_OVER } from '../constants/constants';
 
 const ControlPanel = (props) => { 

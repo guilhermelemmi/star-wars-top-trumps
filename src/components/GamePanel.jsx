@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CardContainer from './CardContainer';
+import CardContainer from './card/CardContainer';
 import {
   STATUS_READY,
-  STATUS_DONE,
   STATUS_OVER,
   PLAYER_1,
   PLAYER_2,

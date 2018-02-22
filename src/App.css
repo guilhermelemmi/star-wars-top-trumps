@@ -202,7 +202,8 @@
 }
 
 .card-feature-value:hover,
-.card-feature-value.selected {
+.card-feature-value.selected,
+.card-feature-label.selected {
   font-weight: bold;
   color: yellow;
 }

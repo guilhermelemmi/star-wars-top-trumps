@@ -21,6 +21,7 @@ const CardContainer = (props) => {
         isClosed={isClosed}
         handleFeatureSelection={handleFeatureSelection}
         status={status}
+        selectedFeature={selectedFeature}
       />
       {!isClosed ? (
         <SelectedFeature
